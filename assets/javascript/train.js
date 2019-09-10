@@ -1,11 +1,13 @@
 // Initialize Firebase
-var config = {
-	apiKey: "AIzaSyANZ09ge-kPZsZcwjGIc6MBOQZIcrbD5AA",
-	authDomain: "fir-train.firebaseapp.com",
-	databaseURL: "https://fir-train.firebaseio.com",
-	storageBucket: "fir-train.appspot.com",
-};
-firebase.initializeApp(config);
+const firebaseConfig = {
+    apiKey: "AIzaSyB66XD8OKjSUOM_pDFPhxBhdx7VmWBLlCg",
+    authDomain: "train-df879.firebaseapp.com",
+    databaseURL: "https://train-df879.firebaseio.com",
+    projectId: "train-df879",
+    storageBucket: "",
+    messagingSenderId: "828895012766",
+    appId: "1:828895012766:web:662050a750f1569d91988f"
+  };
 
 // Create a variable to reference the database
 var database = firebase.database();
