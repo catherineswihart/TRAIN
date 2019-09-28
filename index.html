@@ -1,117 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Firebase</title>
-<link rel="stylesheet" href="assets/css/style.css">
-<!-- Added Moment JS -->
- 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <title>Train Times</title>
 </head>
 <body>
-<div class="container">
-
-	<!-- Jumbotron -->
-	<div class="jumbotron">
-		<h1 class="text-center"><strong>Anytime is Train Time</strong></h1>
-		<h3 class="text-center"><strong>CHOO CHOO. CHEE CHEE.</strong></h3>
-	</div>
-	
-	<div class="row">
-		<div class="col-lg-12">
-	
-		<!-- Current Train Schedule-->
-			<div class="panel panel">
-				<div class="panel-heading">
-					<h3 class="panel-title"><strong>Current Train Schedule</strong></h3>
-				</div>
-				<div class="panel-body">
-					<table class="table table-hover" id='trainTable'>
-						<thead>
-							<tr>
-								<th>Train Name</th>
-								<th>Destination</th>
-								<th>Frequency (min)</th>
-								<th>Next Arrival</th>
-								<th>Minutes Away</th>
-							</tr>
-						</thead>
-						<tbody>
-							
-						</tbody>
-					</table>
-				</div>
-			</div>
-
-			<!-- Add Train  -->
-			<div class="panel panel">
-				<div class="panel-heading">
-					<h3 class="panel-title"><strong>Add Train</strong></h3>
-				</div>
-				<div class="panel-body">
-	
-
-				<!-- Entry Form -->
-				<form>
-					<div class="form-group">
-						<label for="">Train Name</label>
-						<input type="text" class="form-control" id="trainNameInput">
-					</div>
-
-					<div class="form-group">
-						<label for="">Destination</label>
-						<input type="text" class="form-control" id="destInput">
-					</div>
-
-					<div class="form-group">
-						<label for="">First Train Time (HH:mm military time)</label>
-						<input type="text" class="form-control" id="firstTrainInput">
-					</div>
-
-					<div class="form-group">
-						<label for="">Frequency (min)</label>
-						<input type="text" class="form-control" id="freqInput">
-					</div>
-					
-					<button type="submit" class="btn btn" id="addTrainBtn">Submit</button>
-				</form>
-
-				</div>
-			</div>
-
-		</div>
-	</div>
-</div>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#config-web-app -->
-
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
-
-<!-- <script>
-//   // Your web app's Firebase configuration
-//   var firebaseConfig = {
-//     apiKey: "AIzaSyB66XD8OKjSUOM_pDFPhxBhdx7VmWBLlCg",
-//     authDomain: "train-df879.firebaseapp.com",
-//     databaseURL: "https://train-df879.firebaseio.com",
-//     projectId: "train-df879",
-//     storageBucket: "",
-//     messagingSenderId: "828895012766",
-//     appId: "1:828895012766:web:662050a750f1569d91988f"
-//   };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script> -->
-
-<!-- <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script> -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>	
-<script type="text/javascript" src="assets/javascript/train.js"></script>	
+    <section class="container">
+        <br>
+        <div class="jumbotron jumboHead">
+            <h1 class="text-center">TRAIN TIME</h1>
+            <h2 class="text-center">choo choo</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header cardHead">
+                        Current Train Schedule
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-lg table-hover" id="traintable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
+                            </thead>
+                            <tbody id="traintable">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header cardHead">
+                        New Train
+                    </div>
+                    <div class="card-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="name-input">Train Name</label>
+                                <input class="form-control" id="name-input" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="destination-input">Destination</label>
+                                <input type="text" class="form-control" id="destination-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="starttime-input">First Train Time (HH:mm AM/PM)</label>
+                                <input type="time" class="form-control" id="starttime-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="frequency-input">Frequency</label>
+                                <input type="number" class="form-control" id="frequency-input">
+                            </div>
+                            <div>
+                                <button class="btn btn-default" id="add-train" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="assets/javascript/train.js"></script>
 </body>
 </html>
